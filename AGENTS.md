@@ -8,3 +8,7 @@
 > Commits you push to the connected branch sync back to Lovable and show up in
 > the editor, so keep the branch in a working state.
 <!-- LOVABLE:END -->
+
+## Project decisions
+
+- Keep the proposal as one route with internal view state because the experience is a private, app-like command center rather than a public content site.
