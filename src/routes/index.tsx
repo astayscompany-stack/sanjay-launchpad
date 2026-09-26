@@ -230,6 +230,7 @@ function BuildView({ platform, setPlatform }: { platform: Platform; setPlatform:
 function Timeline() {
   const [active, setActive] = useState(0);
   const phase = phases[active];
+  if (!phase) return null;
   return <section>
     <div className="mb-5 grid gap-4 sm:grid-cols-[minmax(0,1fr)_auto] sm:items-end">
       <ScreenIntro eyebrow="Delivery roadmap" title="From Blueprint to Launch" description="Select any station to see what happens there. Web and mobile move together to keep momentum high." />
