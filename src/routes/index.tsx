@@ -59,7 +59,7 @@ const navItems: { id: View; label: string; icon: LucideIcon }[] = [
 
 const platforms: Record<Platform, { label: string; short: string; description: string; count: number; icon: LucideIcon }> = {
   landing: { label: "Landing Page", short: "Landing", description: "A clear, credible introduction to ZHEP’s wellness story.", count: 4, icon: Globe2 },
-  web: { label: "Web Platform", short: "Web", description: "The complete online hub for customers, partners, and operations.", count: 6, icon: MonitorSmartphone },
+  web: { label: "Web Platform", short: "Web", description: "The complete online hub for customers, partners, and operations.", count: 7, icon: MonitorSmartphone },
   android: { label: "Android App", short: "Android", description: "The full ZHEP experience, accessible wherever customers go.", count: 4, icon: Smartphone },
   ios: { label: "iOS App", short: "iOS", description: "A polished iPhone experience with secure, effortless access.", count: 4, icon: Smartphone },
 };
@@ -75,6 +75,7 @@ const featureSets: Record<Platform, { title: string; text: string; icon: LucideI
     { title: "User Login & Registration", text: "A secure, welcoming entry point for every customer and partner.", icon: LockKeyhole },
     { title: "E-Wallet System", text: "A clear view of wallet activity and available account value.", icon: WalletCards },
     { title: "Product Catalog & Ordering", text: "Browse ZHEP products and place orders in a guided flow.", icon: PackageOpen },
+    { title: "Secure Payment Gateway", text: "Complete purchases through a trusted, secure online payment flow.", icon: WalletCards },
     { title: "Referral Network Dashboard", text: "Understand network activity through simple, visual reporting.", icon: Waypoints },
     { title: "Club Tier & Bonus Tracker", text: "Track progress, milestones, and eligibility in one place.", icon: Target },
     { title: "Admin Panel", text: "Manage products, users, content, and operations from a central view.", icon: ShieldCheck },
@@ -96,7 +97,7 @@ const featureSets: Record<Platform, { title: string; text: string; icon: LucideI
 const phases = [
   { title: "Discovery & Design", weeks: "2 weeks", items: ["Align on goals and user journeys", "Create the visual direction", "Approve the build blueprint"] },
   { title: "Landing Page Build", weeks: "2 weeks", items: ["Build the ZHEP brand experience", "Add wellness and product content", "Set up enquiry journeys"] },
-  { title: "Web Platform Build", weeks: "3–4 weeks", items: ["Build customer and partner accounts", "Create ordering and wallet journeys", "Develop the operations dashboard"] },
+  { title: "Web Platform Build", weeks: "3–4 weeks", items: ["Build customer and partner accounts", "Create ordering, wallet, and payment journeys", "Develop the operations dashboard"] },
   { title: "Mobile App Build", weeks: "5–6 weeks", items: ["Build Android and iOS together", "Add notifications and secure login", "Prepare store-ready releases"] },
   { title: "Testing & QA", weeks: "2 weeks", items: ["Test every key user journey", "Check devices and screen sizes", "Resolve launch-readiness issues"] },
   { title: "Launch", weeks: "1–2 weeks", items: ["Move the platform live", "Support app-store submission", "Monitor and stabilise release"] },
@@ -134,13 +135,13 @@ function ProposalDashboard() {
             <p className="truncate text-sm font-semibold">ZHEP Digital Project <span className="font-normal text-muted-foreground">— Prepared for Sanjay</span></p>
           </div>
           <div className="min-w-0 text-right">
-            <p className="truncate text-xs font-semibold sm:text-sm">[Freelancer Name]</p>
+            <p className="truncate text-xs font-semibold sm:text-sm">Abhishek Maurya</p>
             <p className="hidden text-[11px] text-muted-foreground sm:block">Freelance CTO</p>
           </div>
         </header>
 
         <main className="min-h-0 flex-1 overflow-y-auto px-5 pb-28 pt-6 sm:px-8 sm:pt-8 lg:pb-8">
-          <div key={transitionKey} className="screen-enter mx-auto h-full max-w-[1180px]">
+          <div key={transitionKey} className="screen-enter mx-auto min-h-full max-w-[1180px]">
             {view === "overview" && <Overview onNavigate={navigate} />}
             {view === "build" && <BuildView platform={platform} setPlatform={setPlatform} />}
             {view === "timeline" && <Timeline />}
@@ -285,7 +286,7 @@ function NextSteps() {
     </div>
     <div className="mt-6 rounded-lg bg-sidebar p-6 text-sidebar-foreground sm:grid sm:grid-cols-[1fr_auto] sm:items-center sm:gap-8 sm:p-8">
       <div><p className="font-display text-xl font-extrabold sm:text-2xl">Let’s build ZHEP’s next chapter.</p><p className="mt-2 max-w-xl text-sm leading-6 text-sidebar-muted">A focused digital platform that makes the wellness story clearer and the customer experience stronger.</p></div>
-      <div className="mt-5 border-t border-sidebar-border pt-5 sm:mt-0 sm:border-l sm:border-t-0 sm:pl-8 sm:pt-0"><p className="font-bold">[Freelancer Name]</p><p className="mt-1 text-xs text-sidebar-muted">Freelance CTO · [Email / Phone]</p></div>
+       <div className="mt-5 border-t border-sidebar-border pt-5 sm:mt-0 sm:border-l sm:border-t-0 sm:pl-8 sm:pt-0"><p className="font-bold">Abhishek Maurya</p><p className="mt-1 text-xs text-sidebar-muted">Freelance CTO · [Email / Phone]</p></div>
     </div>
   </section>;
 }
