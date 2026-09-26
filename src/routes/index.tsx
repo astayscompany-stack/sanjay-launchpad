@@ -286,7 +286,7 @@ function NextSteps() {
     </div>
     <div className="mt-6 rounded-lg bg-sidebar p-6 text-sidebar-foreground sm:grid sm:grid-cols-[1fr_auto] sm:items-center sm:gap-8 sm:p-8">
       <div><p className="font-display text-xl font-extrabold sm:text-2xl">Let’s build ZHEP’s next chapter.</p><p className="mt-2 max-w-xl text-sm leading-6 text-sidebar-muted">A focused digital platform that makes the wellness story clearer and the customer experience stronger.</p></div>
-       <div className="mt-5 border-t border-sidebar-border pt-5 sm:mt-0 sm:border-l sm:border-t-0 sm:pl-8 sm:pt-0"><p className="font-bold">Abhishek Maurya</p><p className="mt-1 text-xs text-sidebar-muted">Freelance CTO · [Email / Phone]</p></div>
+       <div className="mt-5 border-t border-sidebar-border pt-5 sm:mt-0 sm:border-l sm:border-t-0 sm:pl-8 sm:pt-0"><p className="font-bold">Abhishek Maurya</p></div>
     </div>
   </section>;
 }
