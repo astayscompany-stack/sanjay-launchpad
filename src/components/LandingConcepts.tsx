@@ -50,17 +50,18 @@ const concepts: Array<{
   },
 ];
 
-export function LandingConcepts() {
+export function LandingConcepts({ onPreviewChange }: { onPreviewChange: (open: boolean) => void }) {
   const [selected, setSelected] = useState<ConceptId | null>(null);
 
   useEffect(() => {
+    onPreviewChange(Boolean(selected));
     if (!selected) return undefined;
     const closeOnEscape = (event: KeyboardEvent) => {
       if (event.key === "Escape") setSelected(null);
     };
     window.addEventListener("keydown", closeOnEscape);
     return () => window.removeEventListener("keydown", closeOnEscape);
-  }, [selected]);
+  }, [selected, onPreviewChange]);
 
   if (selected) {
     return (
