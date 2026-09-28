@@ -108,6 +108,7 @@ function ProposalDashboard() {
   const [view, setView] = useState<View>("overview");
   const [platform, setPlatform] = useState<Platform>("landing");
   const [transitionKey, setTransitionKey] = useState(0);
+  const [conceptPreviewOpen, setConceptPreviewOpen] = useState(false);
 
   const navigate = (next: View, selected?: Platform) => {
     if (selected) setPlatform(selected);
@@ -117,7 +118,7 @@ function ProposalDashboard() {
 
   return (
     <div className="h-dvh overflow-hidden bg-background text-foreground lg:grid lg:grid-cols-[248px_minmax(0,1fr)]">
-      <aside className="hidden h-dvh flex-col border-r border-sidebar-border bg-sidebar px-4 py-6 text-sidebar-foreground lg:flex">
+      {!conceptPreviewOpen && <aside className="hidden h-dvh flex-col border-r border-sidebar-border bg-sidebar px-4 py-6 text-sidebar-foreground lg:flex">
         <BrandMark />
         <nav aria-label="Proposal sections" className="mt-12 space-y-1.5">
           {navItems.map((item) => <NavButton key={item.id} item={item} active={view === item.id} onClick={() => navigate(item.id)} />)}
@@ -127,10 +128,10 @@ function ProposalDashboard() {
           <p className="mt-2 font-display text-lg font-bold">Sanjay</p>
           <p className="mt-1 text-xs text-sidebar-muted">Private project proposal</p>
         </div>
-      </aside>
+      </aside>}
 
-      <div className="flex h-dvh min-w-0 flex-col">
-        <header className="grid h-[72px] shrink-0 grid-cols-[minmax(0,1fr)_auto] items-center gap-3 border-b border-border bg-surface-raised px-5 sm:px-8">
+      <div className={`flex h-dvh min-w-0 flex-col ${conceptPreviewOpen ? "lg:col-span-2" : ""}`}>
+        {!conceptPreviewOpen && <header className="grid h-[72px] shrink-0 grid-cols-[minmax(0,1fr)_auto] items-center gap-3 border-b border-border bg-surface-raised px-5 sm:px-8">
           <div className="flex min-w-0 items-center gap-3 lg:hidden"><BrandMark compact /></div>
           <div className="hidden min-w-0 lg:block">
             <p className="truncate text-sm font-semibold">ZHEP Digital Project <span className="font-normal text-muted-foreground">— Prepared for Sanjay</span></p>
@@ -139,26 +140,26 @@ function ProposalDashboard() {
             <p className="truncate text-xs font-semibold sm:text-sm">Abhishek Maurya</p>
             <p className="hidden text-[11px] text-muted-foreground sm:block">Freelance CTO</p>
           </div>
-        </header>
+        </header>}
 
         <main className="min-h-0 flex-1 overflow-y-auto px-5 pb-28 pt-6 sm:px-8 sm:pt-8 lg:pb-8">
           <div key={transitionKey} className="screen-enter mx-auto min-h-full max-w-[1180px]">
             {view === "overview" && <Overview onNavigate={navigate} />}
-            {view === "build" && <BuildView platform={platform} setPlatform={setPlatform} />}
+            {view === "build" && <BuildView platform={platform} setPlatform={setPlatform} onPreviewChange={setConceptPreviewOpen} />}
             {view === "timeline" && <Timeline />}
             {view === "tech" && <TechApproach />}
             {view === "next" && <NextSteps />}
           </div>
         </main>
 
-        <nav aria-label="Proposal sections" className="fixed inset-x-0 bottom-0 z-30 grid h-[76px] grid-cols-5 border-t border-sidebar-border bg-sidebar px-1 pb-[env(safe-area-inset-bottom)] text-sidebar-muted lg:hidden">
+        {!conceptPreviewOpen && <nav aria-label="Proposal sections" className="fixed inset-x-0 bottom-0 z-30 grid h-[76px] grid-cols-5 border-t border-sidebar-border bg-sidebar px-1 pb-[env(safe-area-inset-bottom)] text-sidebar-muted lg:hidden">
           {navItems.map(({ id, label, icon: Icon }) => (
             <button key={id} type="button" onClick={() => navigate(id)} aria-current={view === id ? "page" : undefined} className={`flex min-w-0 flex-col items-center justify-center gap-1 transition-colors ${view === id ? "text-sidebar-primary" : "hover:text-sidebar-foreground"}`}>
               <Icon size={19} strokeWidth={view === id ? 2.4 : 1.8} />
               <span className="max-w-full truncate px-0.5 text-[9px] font-semibold sm:text-[10px]">{label === "What We’re Building" ? "Build" : label}</span>
             </button>
           ))}
-        </nav>
+        </nav>}
       </div>
     </div>
   );
@@ -208,7 +209,7 @@ function Overview({ onNavigate }: { onNavigate: (view: View, platform?: Platform
   </section>;
 }
 
-function BuildView({ platform, setPlatform }: { platform: Platform; setPlatform: (platform: Platform) => void }) {
+function BuildView({ platform, setPlatform, onPreviewChange }: { platform: Platform; setPlatform: (platform: Platform) => void; onPreviewChange: (open: boolean) => void }) {
   const keys = Object.keys(platforms) as Platform[];
   const activeIndex = keys.indexOf(platform);
   return <section>
@@ -226,7 +227,7 @@ function BuildView({ platform, setPlatform }: { platform: Platform; setPlatform:
         <h2 className="font-display text-[15px] font-bold">{title}</h2><p className="mt-2 text-xs leading-5 text-muted-foreground transition-colors group-hover:text-foreground">{text}</p>
       </article>)}
     </div>
-    {platform === "landing" && <LandingConcepts />}
+    {platform === "landing" && <LandingConcepts onPreviewChange={onPreviewChange} />}
   </section>;
 }
 
