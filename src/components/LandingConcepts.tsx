@@ -9,6 +9,7 @@ import {
   Sparkles,
   Sprout,
   UsersRound,
+  X,
 } from "lucide-react";
 import { useEffect, useState } from "react";
 
@@ -77,6 +78,14 @@ export function LandingConcepts({ onPreviewChange }: { onPreviewChange: (open: b
           {selected === "products" && <ProductConcept />}
           {selected === "partnership" && <PartnershipConcept />}
         </div>
+        <button
+          type="button"
+          onClick={() => setSelected(null)}
+          aria-label="Close preview"
+          className="fixed bottom-5 right-4 z-30 inline-flex items-center gap-2 rounded-full border border-border bg-card px-4 py-3 text-xs font-bold text-foreground shadow-lg transition-colors hover:border-sky-strong hover:text-accent-foreground sm:bottom-7 sm:right-6"
+        >
+          <X size={16} /> Close preview
+        </button>
       </div>
     );
   }
