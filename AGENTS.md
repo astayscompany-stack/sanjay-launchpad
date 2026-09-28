@@ -12,3 +12,4 @@
 ## Project decisions
 
 - Keep the proposal as one route with internal view state because the experience is a private, app-like command center rather than a public content site.
+- Keep landing-page concepts in a dedicated presentation module while opening them through local state, so the proposal stays instant and the large mockups remain maintainable.

@@ -31,6 +31,7 @@ import {
   type LucideIcon,
 } from "lucide-react";
 import { useState } from "react";
+import { LandingConcepts } from "../components/LandingConcepts";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -225,6 +226,7 @@ function BuildView({ platform, setPlatform }: { platform: Platform; setPlatform:
         <h2 className="font-display text-[15px] font-bold">{title}</h2><p className="mt-2 text-xs leading-5 text-muted-foreground transition-colors group-hover:text-foreground">{text}</p>
       </article>)}
     </div>
+    {platform === "landing" && <LandingConcepts />}
   </section>;
 }
 
