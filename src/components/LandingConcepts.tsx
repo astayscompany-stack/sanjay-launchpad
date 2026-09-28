@@ -12,14 +12,9 @@ import {
 } from "lucide-react";
 import { useState, type ReactNode } from "react";
 
-import wellnessHero from "../assets/zhep/zhep-1.jpg.asset.json";
-import liverStory from "../assets/zhep/zhep-6.jpg.asset.json";
-import zephOn from "../assets/zhep/zhep-11.jpg.asset.json";
-import darkLove from "../assets/zhep/zhep-12.jpg.asset.json";
-import shuchi from "../assets/zhep/zhep-13.jpg.asset.json";
-import partnership from "../assets/zhep/zhep-15.jpg.asset.json";
-
 type ConceptId = "wellness" | "products" | "partnership";
+
+const zhepImage = (number: number) => `/ZHEP%20PPT%20ENGLISH-images-${number}.jpg`;
 
 const concepts: Array<{
   id: ConceptId;
@@ -35,7 +30,7 @@ const concepts: Array<{
     title: "The Wellness Journey",
     direction: "Story-led · Calm · Educational",
     description: "Leads with ZHEP’s Clinz, Revitalize, Balance philosophy and turns wellness education into a guided journey.",
-    image: wellnessHero.url,
+    image: zhepImage(1),
   },
   {
     id: "products",
@@ -43,7 +38,7 @@ const concepts: Array<{
     title: "Nature, Made Practical",
     direction: "Product-led · Premium · Clear",
     description: "Introduces the range through everyday needs, trusted ingredients, and focused product stories.",
-    image: zephOn.url,
+    image: zhepImage(11),
   },
   {
     id: "partnership",
@@ -51,7 +46,7 @@ const concepts: Array<{
     title: "Grow Well, Together",
     direction: "Community-led · Confident · Human",
     description: "Balances product credibility with ZHEP’s customer partnership and farmer-connected mission.",
-    image: partnership.url,
+    image: zhepImage(15),
   },
 ];
 
@@ -127,7 +122,7 @@ function WellnessConcept() {
     <div className="bg-background">
       <ConceptHeader active="Wellness" />
       <section className="relative min-h-[480px] overflow-hidden sm:min-h-[560px]">
-        <img src={wellnessHero.url} alt="Woman meditating in nature beside traditional herbs" className="absolute inset-0 h-full w-full object-cover object-[62%_center]" />
+        <img src={zhepImage(1)} alt="Woman meditating in nature beside traditional herbs" className="absolute inset-0 h-full w-full object-cover object-[62%_center]" />
         <div className="absolute inset-0 bg-gradient-to-r from-card via-card/90 to-card/10" />
         <div className="relative flex min-h-[480px] max-w-2xl flex-col justify-center px-6 py-14 sm:min-h-[560px] sm:px-10 lg:px-14">
           <p className="text-xs font-bold uppercase tracking-[0.16em] text-primary">Connecting your health with farmers</p>
@@ -144,7 +139,7 @@ function WellnessConcept() {
         ].map(([step, title, text]) => <div key={title} className="border-b border-border p-6 last:border-b-0 sm:border-b-0 sm:border-r sm:last:border-r-0"><span className="text-xs font-extrabold text-primary">{step}</span><h4 className="font-display mt-2 text-lg font-extrabold">{title}</h4><p className="mt-2 text-xs leading-5 text-muted-foreground">{text}</p></div>)}
       </section>
       <section className="grid gap-6 px-6 py-10 sm:grid-cols-[1fr_1.1fr] sm:items-center sm:px-10">
-        <ImagePanel src={liverStory.url} alt="ZHEP liver wellness education" className="aspect-[16/10] rounded-lg" />
+        <ImagePanel src={zhepImage(6)} alt="ZHEP liver wellness education" className="aspect-[16/10] rounded-lg" />
         <div><p className="text-xs font-bold uppercase tracking-[0.14em] text-primary">Wellness library</p><h3 className="font-display mt-2 text-2xl font-extrabold">Understand your body. Make informed choices.</h3><p className="mt-3 text-sm leading-6 text-muted-foreground">Helpful education explains how the liver supports digestion, nutrient storage, and the body’s natural waste-removal processes—without overwhelming the reader.</p><p className="mt-5 inline-flex items-center gap-2 text-sm font-bold text-accent-foreground">Explore wellness topics <ArrowRight size={16} /></p></div>
       </section>
     </div>
@@ -153,9 +148,9 @@ function WellnessConcept() {
 
 function ProductConcept() {
   const products = [
-    { name: "ZHEP-ON", need: "Daily vitality", image: zephOn.url, copy: "A traditional phyto-herbal formulation for focus, vitality, and overall well-being." },
-    { name: "Shuchi", need: "Digestive balance", image: shuchi.url, copy: "An Ayurvedic herbal blend created to support digestion and colon cleansing." },
-    { name: "Dark Love", need: "Energy & confidence", image: darkLove.url, copy: "A premium herbal wellness chocolate blending familiar indulgence with natural ingredients." },
+    { name: "ZHEP-ON", need: "Daily vitality", image: zhepImage(11), copy: "A traditional phyto-herbal formulation for focus, vitality, and overall well-being." },
+    { name: "Shuchi", need: "Digestive balance", image: zhepImage(13), copy: "An Ayurvedic herbal blend created to support digestion and colon cleansing." },
+    { name: "Dark Love", need: "Energy & confidence", image: zhepImage(12), copy: "A premium herbal wellness chocolate blending familiar indulgence with natural ingredients." },
   ];
   return (
     <div className="bg-background">
@@ -167,7 +162,7 @@ function ProductConcept() {
           <p className="mt-5 max-w-lg text-sm leading-6 text-muted-foreground sm:text-base">Discover focused herbal formulations for digestion, vitality, energy, and everyday balance—presented by need, not complexity.</p>
           <div className="mt-7 flex flex-wrap gap-2">{["Digestive care", "Daily vitality", "Energy", "Balance"].map((item) => <span key={item} className="rounded-md border border-border bg-background px-3 py-2 text-xs font-bold">{item}</span>)}</div>
         </div>
-        <ImagePanel src={zephOn.url} alt="ZHEP-ON traditional phyto-herbal wellness product" className="min-h-[320px] lg:min-h-[460px]" />
+        <ImagePanel src={zhepImage(11)} alt="ZHEP-ON traditional phyto-herbal wellness product" className="min-h-[320px] lg:min-h-[460px]" />
       </section>
       <section className="px-6 py-10 sm:px-10">
         <div className="mb-6"><p className="text-xs font-bold uppercase tracking-[0.14em] text-primary">Explore by wellness goal</p><h3 className="font-display mt-2 text-2xl font-extrabold">A clear path to the right product</h3></div>
@@ -185,7 +180,7 @@ function PartnershipConcept() {
     <div className="bg-background">
       <ConceptHeader active="Partner" />
       <section className="relative min-h-[500px] overflow-hidden bg-sidebar text-sidebar-foreground">
-        <img src={partnership.url} alt="ZHEP customer partnership and community growth" className="absolute inset-0 h-full w-full object-cover object-[35%_center] opacity-45" />
+        <img src={zhepImage(15)} alt="ZHEP customer partnership and community growth" className="absolute inset-0 h-full w-full object-cover object-[35%_center] opacity-45" />
         <div className="absolute inset-0 bg-gradient-to-r from-sidebar via-sidebar/95 to-sidebar/20" />
         <div className="relative flex min-h-[500px] max-w-2xl flex-col justify-center px-6 py-14 sm:px-10 lg:px-14">
           <p className="text-xs font-bold uppercase tracking-[0.16em] text-sidebar-primary">Customer partnership program</p>
