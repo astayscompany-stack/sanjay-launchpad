@@ -10,7 +10,7 @@ import {
   Sprout,
   UsersRound,
 } from "lucide-react";
-import { useState, type ReactNode } from "react";
+import { useEffect, useRef, useState } from "react";
 
 type ConceptId = "wellness" | "products" | "partnership";
 
@@ -46,16 +46,23 @@ const concepts: Array<{
     title: "Grow Well, Together",
     direction: "Community-led · Confident · Human",
     description: "Balances product credibility with ZHEP’s customer partnership and farmer-connected mission.",
-    image: zhepImage(15),
+    image: zhepImage(0),
   },
 ];
 
 export function LandingConcepts() {
   const [selected, setSelected] = useState<ConceptId | null>(null);
+  const conceptRoot = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!selected) return;
+    const frame = requestAnimationFrame(() => conceptRoot.current?.scrollIntoView({ block: "start", behavior: "smooth" }));
+    return () => cancelAnimationFrame(frame);
+  }, [selected]);
 
   if (selected) {
     return (
-      <div className="screen-enter mt-8 overflow-hidden rounded-lg border border-border bg-card shadow-lg">
+      <div ref={conceptRoot} className="screen-enter mt-8 overflow-hidden rounded-lg border border-border bg-card shadow-lg">
         <div className="flex flex-wrap items-center justify-between gap-3 border-b border-border bg-surface-raised px-4 py-3 sm:px-6">
           <button type="button" onClick={() => setSelected(null)} className="inline-flex items-center gap-2 rounded-md border border-border bg-card px-3 py-2 text-xs font-bold transition-colors hover:border-primary hover:text-accent-foreground">
             <ArrowLeft size={15} /> Back to concepts
@@ -180,7 +187,7 @@ function PartnershipConcept() {
     <div className="bg-background">
       <ConceptHeader active="Partner" />
       <section className="relative min-h-[500px] overflow-hidden bg-sidebar text-sidebar-foreground">
-        <img src={zhepImage(15)} alt="ZHEP customer partnership and community growth" className="absolute inset-0 h-full w-full object-cover object-[35%_center] opacity-45" />
+        <img src={zhepImage(0)} alt="ZHEP natural wellness concept with traditional herbs" className="absolute inset-0 h-full w-full object-cover object-center opacity-45" />
         <div className="absolute inset-0 bg-gradient-to-r from-sidebar via-sidebar/95 to-sidebar/20" />
         <div className="relative flex min-h-[500px] max-w-2xl flex-col justify-center px-6 py-14 sm:px-10 lg:px-14">
           <p className="text-xs font-bold uppercase tracking-[0.16em] text-sidebar-primary">Customer partnership program</p>
