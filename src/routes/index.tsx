@@ -32,6 +32,7 @@ import {
 } from "lucide-react";
 import { useState } from "react";
 import { LandingConcepts } from "../components/LandingConcepts";
+import { WebPlatformConcepts } from "../components/WebPlatformConcepts";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -228,6 +229,7 @@ function BuildView({ platform, setPlatform, onPreviewChange }: { platform: Platf
       </article>)}
     </div>
     {platform === "landing" && <LandingConcepts onPreviewChange={onPreviewChange} />}
+    {platform === "web" && <WebPlatformConcepts onPreviewChange={onPreviewChange} />}
   </section>;
 }
 
