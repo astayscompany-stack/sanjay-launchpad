@@ -6,4 +6,4 @@
 - [x] Extend each landing concept through a complete closing section.
 - [x] Add three complete web-platform design concepts.
 - [x] Represent shopping, checkout, wallet, referrals, club progress, orders, and administration.
-- [ ] Verify all web concepts on desktop and mobile, including open, scroll, and close behavior.
+- [x] Verify all web concepts on desktop and mobile, including open, scroll, and close behavior.

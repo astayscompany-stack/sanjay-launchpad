@@ -152,7 +152,7 @@ const productData = [
   { name: "ZHEP-ON", need: "Daily vitality", image: zhepImage(11), tag: "Phyto-herbal" },
   { name: "Shuchi", need: "Digestive balance", image: zhepImage(13), tag: "Ayurvedic blend" },
   { name: "Dark Love", need: "Energy & confidence", image: zhepImage(12), tag: "Herbal wellness" },
-];
+] as const;
 
 function ProductCard({ product }: { product: (typeof productData)[number] }) {
   return <article className="group overflow-hidden rounded-lg border border-border bg-card shadow-sm"><div className="relative aspect-[4/3] overflow-hidden bg-sky-soft"><img src={product.image} alt={`${product.name} wellness product`} className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.04]" /><span className="absolute right-3 top-3 grid h-8 w-8 place-items-center rounded-full bg-card/95 text-muted-foreground shadow-sm"><Heart size={15} /></span></div><div className="p-4"><span className="text-[10px] font-bold uppercase tracking-[0.12em] text-primary">{product.tag}</span><h4 className="font-display mt-1 text-lg font-extrabold">{product.name}</h4><p className="mt-1 text-xs text-muted-foreground">{product.need}</p><span className="mt-4 flex items-center justify-center gap-2 rounded-md bg-sidebar px-3 py-2.5 text-xs font-bold text-sidebar-foreground">Add to bag <ShoppingBag size={14} /></span></div></article>;
